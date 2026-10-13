@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-# Évite de faire tourner des pipelines obsolètes sur la même PR
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
