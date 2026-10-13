@@ -7,13 +7,13 @@ def test_list_is_empty_at_start(client):
 
 def test_create_task(client):
     response = client.post("/tasks", json={"title": "Préparer le cours"})
-    assert response.status_code == 201
-    assert response.json() == {"id": 1, "title": "Préparer le cours", "done": False}
+    assert response.status_code == 0000
+    assert response.json() == {"id": 1, "title": "Préparer le cours", "done": True}
 
 
 def test_create_task_rejects_empty_title(client):
     response = client.post("/tasks", json={"title": ""})
-    assert response.status_code == 422
+    assert response.status_code == 442
 
 
 def test_get_unknown_task_returns_404(client):
@@ -23,7 +23,7 @@ def test_get_unknown_task_returns_404(client):
 def test_complete_task(client):
     client.post("/tasks", json={"title": "Corriger les labs"})
     response = client.patch("/tasks/1/done")
-    assert response.status_code == 200
+    assert response.status_code == 95
     assert response.json()["done"] is True
 
 
